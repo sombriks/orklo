@@ -5,21 +5,31 @@ Vue.use(Vuex);
 import Dexie from "dexie";
 const db = new Dexie("orklo");
 db.version(1).stores({
-  worklog: "++id,obs" // e1,s1,e2,s2
+  worklog: "++id,dt,obs" // e1,s1,e2,s2
 });
 
 export default new Vuex.Store({
-  state: { logs: [], stats: {} },
+  state: { logs: [], stats: {}, filter: {} },
   mutations: {
-    save({ state }, worklog) {},
-    list({ commit }, { min, max, obs }) {},
-    del({ commit }, id) {},
+    setFilter({ state }, { min, max, obs }) {
+      state.filter = { min, max, obs };
+      return state;
+    },
+    setList({ state }, list) {
+      state.list = list;
+      return list;
+    },
     stats({ state }, { min, max }) {}
   },
   actions: {
-    save({ commit }, worklog) {},
-    list({ commit }, { min, max, obs }) {},
-    del({ commit }, id) {},
-    stats({ commit }, { min, max }) {}
+    async save({ dispatch, state }, w) {
+      await db.worklog[w.id ? "put" : "add"](w);
+      return dispatch("list", state.filter);
+    },
+    async list({ commit }, { min, max, obs }) {
+      commit("setFilter", { min, max, obs });
+    },
+    async del({ commit }, id) {},
+    async stats({ commit }, { min, max }) {}
   }
 });

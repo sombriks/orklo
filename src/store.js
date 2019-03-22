@@ -29,7 +29,10 @@ export default new Vuex.Store({
     async list({ commit }, { min, max, obs }) {
       commit("setFilter", { min, max, obs });
     },
-    async del({ commit }, id) {},
+    async del({ commit }, id) {
+      await db.worklog.del(id);
+      return dispatch("list", state.filter);
+    },
     async stats({ commit }, { min, max }) {}
   }
 });

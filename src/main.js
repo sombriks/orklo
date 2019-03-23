@@ -11,6 +11,12 @@ Vue.use(Buefy);
 
 import App from "./App.vue";
 
+import { WlBar, WlCard, WlStats } from "./components";
+
+Vue.component("wl-bar", WlBar);
+Vue.component("wl-card", WlCard);
+Vue.component("wl-stats", WlStats);
+
 Vue.config.productionTip = false;
 
 new Vue({

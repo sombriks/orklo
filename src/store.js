@@ -5,7 +5,8 @@ Vue.use(Vuex);
 import Dexie from "dexie";
 const db = new Dexie("orklo");
 db.version(1).stores({
-  worklog: "++id,dt,obs" // e1,s1,e2,s2
+  worklog: "++id,dt,obs", // e1,s1,e2,s2
+  settings: "++id"
 });
 
 export default new Vuex.Store({
@@ -28,6 +29,7 @@ export default new Vuex.Store({
     },
     async list({ commit }, { min, max, obs }) {
       commit("setFilter", { min, max, obs });
+      db.worklog.where("dt").between()
     },
     async del({ commit }, id) {
       await db.worklog.del(id);

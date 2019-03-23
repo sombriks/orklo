@@ -1,5 +1,9 @@
 <template>
-  <div id="app"></div>
+  <div class="container is-fluid">
+    <wl-bar class="tile" />
+    <wl-card class="tile" />
+    <wl-stats class="tile" />
+  </div>
 </template>
 
 <script>

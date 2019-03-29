@@ -23,18 +23,24 @@ export default new Vuex.Store({
     // stats({ state }, { min, max }) {}
   },
   actions: {
-    async save({ dispatch, state }, w) {
+    async save({ dispatch }, w) {
+      console.log("saving");
       await db.worklog[w.id ? "put" : "add"](w);
-      return dispatch("list", state.filter);
+      return dispatch("list");
     },
-    async list({ commit }, { min, max, obs }) {
-      commit("setFilter", { min, max, obs });
-      const list = db.worklog.where("dt").between(min, max);
-      return commit("setList", list);
+    list({ commit, state }) {
+      const { min, max } = state.filter;
+      db.worklog
+        .where("dt")
+        .between(min, max)
+        .toArray()
+        .then(list => {
+          commit("setList", list);
+        });
     },
-    async del({ dispatch, state }, id) {
+    async del({ dispatch }, id) {
       await db.worklog.del(id);
-      return dispatch("list", state.filter);
+      return dispatch("list");
     }
     // async stats({ commit }, { min, max }) {}
   }

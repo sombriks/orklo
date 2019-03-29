@@ -1,3 +1,5 @@
+import "flexboxgrid/dist/flexboxgrid.css";
+
 import { version } from "../package.json";
 
 console.log(`this is orklo [${version}]`);

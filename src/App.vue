@@ -1,8 +1,8 @@
 <template>
-  <div class="container is-fluid">
-    <wl-bar class="tile" />
-    <wl-card class="tile" />
-    <wl-stats class="tile" />
+  <div class="row">
+    <wl-bar class="col-xs-12 col-md-6 col-lg-4" />
+    <wl-card class="col-xs-12 col-md-6 col-lg-4" />
+    <wl-stats class="col-xs-12 col-md-6 col-lg-4" />
   </div>
 </template>
 

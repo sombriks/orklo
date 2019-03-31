@@ -1,8 +1,10 @@
 <template>
   <div class="container is-fluid">
-    <div class="tile is-ancestor">
-      <wl-form></wl-form>
-      <wl-stats class="tile is-child box"></wl-stats>
+    <div class="tile is-ancestor" style="flex-wrap:wrap;">
+      <div class="tile is-parent is-vertical is-6">
+        <wl-form></wl-form>
+        <wl-stats class="tile"></wl-stats>
+      </div>
       <wl-card v-for="wl in $store.state.logs" :key="wl.id" :wl="wl" class="tile is-child box"></wl-card>
     </div>
   </div>

@@ -1,24 +1,27 @@
 import Vue from "vue";
+import Dexie from "dexie";
+import { DateTime } from "luxon";
 import Vuex from "vuex";
 Vue.use(Vuex);
 
-import Dexie from "dexie";
 const db = new Dexie("orklo");
 db.version(1).stores({
-  worklog: "++id,dt,obs", // e1,s1,e2,s2
+  worklog: "++id,dt", // e1,s1,e2,s2
   settings: "++id"
 });
 
 export default new Vuex.Store({
   state: { logs: [], stats: {}, filter: {} },
   mutations: {
-    setFilter({ state }, { min, max, obs }) {
+    setFilter(state, { min, max, obs }) {
       state.filter = { min, max, obs };
       return state;
     },
-    setList({ state }, list) {
-      state.list = list;
-      return list;
+    setLogs(state, logs) {
+      console.log("lista:");
+      console.log(logs);
+      state.logs = logs;
+      return state;
     }
     // stats({ state }, { min, max }) {}
   },
@@ -29,13 +32,19 @@ export default new Vuex.Store({
       return dispatch("list");
     },
     list({ commit, state }) {
-      const { min, max } = state.filter;
+      console.log("listando...");
+      const {
+        min = DateTime.local()
+          .minus({ days: 60 })
+          .toJSDate(),
+        max = DateTime.local().toJSDate()
+      } = state.filter;
       db.worklog
         .where("dt")
         .between(min, max)
         .toArray()
-        .then(list => {
-          commit("setList", list);
+        .then(logs => {
+          commit("setLogs", logs);
         });
     },
     async del({ dispatch }, id) {

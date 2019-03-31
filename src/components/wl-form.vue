@@ -44,8 +44,6 @@
 </template>
 
 <script>
-// import { DateTime } from "luxon";
-
 const newwl = () => ({
   dt: new Date(),
   e1: null,

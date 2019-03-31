@@ -1,5 +1,5 @@
-import WlBar from "./wl-bar.vue";
+import WlForm from "./wl-form.vue";
 import WlCard from "./wl-card.vue";
 import WlStats from "./wl-stats.vue";
 
-export { WlBar, WlCard, WlStats };
+export { WlForm, WlCard, WlStats };

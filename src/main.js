@@ -11,9 +11,9 @@ Vue.use(Buefy);
 
 import App from "./App.vue";
 
-import { WlBar, WlCard, WlStats } from "./components";
+import { WlForm, WlCard, WlStats } from "./components";
 
-Vue.component("wl-bar", WlBar);
+Vue.component("wl-form", WlForm);
 Vue.component("wl-card", WlCard);
 Vue.component("wl-stats", WlStats);
 

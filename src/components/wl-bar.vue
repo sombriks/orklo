@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="dosave()">
+  <form class="tile" @submit.prevent="dosave()">
     <div class="row bottom-xs">
       <div class="col-xs-6">
         <b-field label="Data do worklog">

@@ -1,9 +1,11 @@
 <template>
-  <div class="container">
-    <div class="row">
-      <wl-bar class="col-xs-12" />
-      <wl-card class="col-xs-12 col-md-6 col-lg-4" />
-      <wl-stats class="col-xs-12 col-md-6 col-lg-4" />
+  <div class="tile is-ancestor">
+    <div class="tile is-parent">
+      <wl-bar class="tile is-child is-12" />
+    </div>
+    <div class="tile is-parent">
+      <wl-card class="tile is-child box" />
+      <wl-stats class="tile is-child box" />
     </div>
   </div>
 </template>

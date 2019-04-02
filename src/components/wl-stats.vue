@@ -1,5 +1,5 @@
 <template>
-  <div>a</div>
+  <div class="tile is-child box">stats</div>
 </template>
 
 <script>

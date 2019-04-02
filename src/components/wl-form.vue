@@ -10,34 +10,29 @@
       ></b-datepicker>
     </b-field>
     <b-field label="Manhã">
-      <b-field>
-        <b-timepicker v-model="wl.e1" required></b-timepicker>
-        <button type="button" class="button control" @click="e => (wl.e1 = new Date())">Agora</button>
-      </b-field>
+      <wl-time v-model="wl.e1"></wl-time>
     </b-field>
     <b-field label="Almoço">
-      <b-field>
-        <b-timepicker v-model="wl.s1" required></b-timepicker>
-        <button type="button" class="button control" @click="e => (wl.s1 = new Date())">Agora</button>
-      </b-field>
+      <wl-time v-model="wl.s1"></wl-time>
     </b-field>
     <b-field label="Tarde">
-      <b-field>
-        <b-timepicker v-model="wl.e2" required></b-timepicker>
-        <button type="button" class="button control" @click="e => (wl.e2 = new Date())">Agora</button>
-      </b-field>
+      <wl-time v-model="wl.e2"></wl-time>
     </b-field>
     <b-field label="Saída">
-      <b-field>
-        <b-timepicker v-model="wl.s2" required></b-timepicker>
-        <button type="button" class="button control" @click="e => (wl.s2 = new Date())">Agora</button>
-      </b-field>
+      <wl-time v-model="wl.s2"></wl-time>
     </b-field>
     <b-field label="Observação">
       <b-input v-model="wl.obs" type="textarea"></b-input>
     </b-field>
     <b-field>
-      <button v-if="wl.id" type="button" class="button is-danger" @click="dodel">Excluir</button>
+      <button
+        v-if="wl.id"
+        type="button"
+        class="button is-danger"
+        @click="dodel"
+      >
+        Excluir
+      </button>
       <button class="button is-primary" type="submit">Salvar</button>
     </b-field>
   </form>

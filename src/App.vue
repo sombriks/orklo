@@ -1,13 +1,21 @@
 <template>
-  <div class="container is-fluid">
-    <div class="tile is-ancestor" style="flex-wrap:wrap;">
-      <div class="tile is-parent is-vertical is-6">
-        <wl-form></wl-form>
-        <wl-stats class="tile"></wl-stats>
+  <section>
+    <div class="container">
+      <div class="tile is-ancestor">
+        <div class="tile is-parent is-5 is-vertical">
+          <wl-form></wl-form>
+        </div>
+        <div class="tile is-parent is-7 is-vertical">
+          <wl-stats></wl-stats>
+          <wl-card
+            v-for="wl in $store.state.logs"
+            :key="wl.id"
+            :wl="wl"
+          ></wl-card>
+        </div>
       </div>
-      <wl-card v-for="wl in $store.state.logs" :key="wl.id" :wl="wl" class="tile is-child box"></wl-card>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>

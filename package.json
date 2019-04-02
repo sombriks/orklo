@@ -8,6 +8,7 @@
     "dev": "vue-cli-service serve --open"
   },
   "dependencies": {
+    "@mdi/font": "^3.5.95",
     "buefy": "^0.7.3",
     "dexie": "^2.0.4",
     "luxon": "^1.12.0",

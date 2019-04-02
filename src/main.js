@@ -9,13 +9,16 @@ import Buefy from "buefy";
 import "buefy/dist/buefy.css";
 Vue.use(Buefy);
 
+import "@mdi/font/css/materialdesignicons.css";
+
 import App from "./App.vue";
 
-import { WlForm, WlCard, WlStats } from "./components";
+import { WlCard, WlForm, WlStats, WlTime } from "./components";
 
 Vue.component("wl-form", WlForm);
 Vue.component("wl-card", WlCard);
 Vue.component("wl-stats", WlStats);
+Vue.component("wl-time", WlTime);
 
 Vue.config.productionTip = false;
 

@@ -54,7 +54,10 @@ export default {
   }),
   methods: {
     dosave() {
-      const { dt, e1, s1, e2, s2, obs } = this.wl;
+      let { dt, e1, s1, e2, s2, obs } = this.wl;
+      [dt, e1, s1, e2, s2] = [dt, e1, s1, e2, s2].map(d =>
+        d ? d.toJSON() : d
+      );
       if (!dt || !e1) return alert("Preencha os campos");
       this.$store
         .dispatch("save", {

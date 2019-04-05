@@ -18,8 +18,6 @@ export default new Vuex.Store({
       return state;
     },
     setLogs(state, logs) {
-      console.log("lista:");
-      console.log(logs);
       state.logs = logs;
       return state;
     }
@@ -32,12 +30,11 @@ export default new Vuex.Store({
       return dispatch("list");
     },
     list({ commit, state }) {
-      console.log("listando...");
       const {
         min = DateTime.local()
           .minus({ days: 60 })
-          .toJSDate(),
-        max = DateTime.local().toJSDate()
+          .toISODate(),
+        max = DateTime.local().toISODate()
       } = state.filter;
       db.worklog
         .where("dt")
